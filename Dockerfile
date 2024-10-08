@@ -1,6 +1,6 @@
 FROM oven/bun:1
 
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
 COPY package.json .
 RUN bun i svelte-adapter-bun
