@@ -1,0 +1,38 @@
+{
+  "name": "lock",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build --sourcemap",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.27.3",
+    "@fontsource-variable/jetbrains-mono": "^5.1.1",
+    "@iconify/json": "^2.2.258",
+    "@shikijs/rehype": "^1.22.0",
+    "@sveltejs/adapter-auto": "^3.2.5",
+    "@sveltejs/kit": "^2.6.3",
+    "@sveltejs/vite-plugin-svelte": "^3.1.2",
+    "@unocss/eslint-config": "^0.62.4",
+    "@unocss/extractor-svelte": "^0.62.4",
+    "@unocss/reset": "^0.62.4",
+    "eslint": "^9.12.0",
+    "eslint-plugin-format": "^0.1.2",
+    "eslint-plugin-svelte": "^2.44.1",
+    "pyodide": "0.26.2",
+    "shiki": "^1.22.0",
+    "smol-toml": "^1.3.0",
+    "svelte": "^4.2.19",
+    "svelte-check": "^4.0.4",
+    "tslib": "^2.7.0",
+    "typescript": "^5.6.2",
+    "unocss": "^0.62.4",
+    "vite": "^5.4.8"
+  }
+}
