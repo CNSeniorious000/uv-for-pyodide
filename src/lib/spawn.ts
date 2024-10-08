@@ -6,7 +6,7 @@ export async function run(command: string, cwd?: string) {
   const parts = command.split(" ");
 
   return new Promise<{ stdout: string; stderr: string; code: number | null }>((resolve) => {
-    const process = spawn(parts[0], parts.slice(1), {
+    const process = spawn(`./node_modules/.bin/${parts[0]}`, parts.slice(1), {
       stdio: ["pipe", "pipe", "pipe"],
       cwd,
     });
