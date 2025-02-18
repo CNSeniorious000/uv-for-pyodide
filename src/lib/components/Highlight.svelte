@@ -1,15 +1,23 @@
-<script lang="ts">
+<script module lang="ts">
   import type { BundledLanguage, BundledTheme } from "shiki";
 
+  interface Props {
+    lang: BundledLanguage | "ansi" | "text";
+    source: string;
+    theme?: BundledTheme;
+  }
+</script>
+
+<script lang="ts">
   import { codeToHtml } from "shiki";
 
-  export let lang: BundledLanguage | "ansi" | "text";
-  export let source: string;
-  export let theme: BundledTheme = "vesper";
+  const { lang, source, theme = "vesper" }: Props = $props();
 
-  let html = "";
+  let html = $state("");
 
-  $: codeToHtml(source, { lang, theme }).then((out) => (html = out));
+  $effect(() => {
+    codeToHtml(source, { lang, theme }).then((out) => (html = out));
+  });
 </script>
 
 <div class="text-xs line-height-relaxed [&_*]:font-mono [&>pre]:!bg-transparent">
