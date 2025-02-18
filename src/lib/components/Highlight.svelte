@@ -1,23 +1,27 @@
 <script module lang="ts">
-  import type { BundledLanguage, BundledTheme } from "shiki";
-
   interface Props {
-    lang: BundledLanguage | "ansi" | "text";
+    lang: "json" | "toml";
     source: string;
-    theme?: BundledTheme;
   }
 </script>
 
 <script lang="ts">
-  import { codeToHtml } from "shiki";
+  import type { HighlighterCore } from "shiki/core";
 
-  const { lang, source, theme = "vesper" }: Props = $props();
+  import { browser } from "$app/environment";
 
-  let html = $state("");
+  const { lang, source }: Props = $props();
 
-  $effect(() => {
-    codeToHtml(source, { lang, theme }).then((out) => (html = out));
-  });
+  let highlighter = $state<HighlighterCore>();
+
+  async function init() {
+    const { getHighlighter } = await import("../highlight");
+    highlighter = await getHighlighter();
+  }
+
+  browser && init();
+
+  const html = $derived(highlighter?.codeToHtml(source, { lang, theme: "vesper" }) ?? "");
 </script>
 
 <div class="text-xs line-height-relaxed [&_*]:font-mono [&>pre]:!bg-transparent">
