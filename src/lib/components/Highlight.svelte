@@ -1,5 +1,7 @@
 <script lang="ts">
-  import { type BundledLanguage, type BundledTheme, codeToHtml } from "shiki";
+  import type { BundledLanguage, BundledTheme } from "shiki";
+
+  import { codeToHtml } from "shiki";
 
   export let lang: BundledLanguage | "ansi" | "text";
   export let source: string;
